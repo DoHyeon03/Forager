@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Prototiping : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Prototiping : MonoBehaviour
     public bool dashOn = false;
 
     public GameManager gameManager;
+    public Text ingotCount;
 
     void Start()
     {
@@ -55,17 +57,17 @@ public class Prototiping : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
+
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.name);
         if (other.CompareTag("Item"))
         {
-            Destroy(other);
             gameManager.ingotCount++;
+            ingotCount.text = $"IngotCount : {gameManager.ingotCount}";
+            //Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }

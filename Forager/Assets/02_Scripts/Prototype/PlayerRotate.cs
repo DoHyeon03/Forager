@@ -11,27 +11,54 @@ public class PlayerRotate : MonoBehaviour
 
     public Ore ore;
 
+    public float curTime;
+    public float coolTime = 0.3f;
+    public bool attackOn = false;
+
     private void Start()
     {
         layerMask = 1 << 6;
     }
     void Update()
     {
-        transform.Rotate(0f, -Input.GetAxis("Mouse X") * speed, 0f, Space.World);
+        Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+        Plane GroupPlane = new Plane(Vector3.up, Vector3.zero);
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, layerMask))
+        float rayLength;
+
+        if (GroupPlane.Raycast(cameraRay, out rayLength))
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            Vector3 pointTolook = cameraRay.GetPoint(rayLength);
+
+            transform.LookAt(new Vector3(pointTolook.x, transform.position.y, pointTolook.z));
+        }
+
+        if (attackOn)
+        {
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 5f, layerMask))
             {
-                ore = GameObject.Find(hit.collider.gameObject.name).GetComponent<Ore>();
-                ore.oreHp--;
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    ore = GameObject.Find(hit.collider.gameObject.name).GetComponent<Ore>();
+                    ore.oreHp--;
+                    attackOn = false;
+                }
+                Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
             }
-            Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
+            else
+            {
+                Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
+            }
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.forward * 1000f, Color.red);
+            curTime += Time.deltaTime;
+            if (curTime >= coolTime)
+            {
+                attackOn = true;
+                curTime = 0;
+            }
         }
     }
 }
