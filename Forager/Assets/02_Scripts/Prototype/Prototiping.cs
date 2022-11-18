@@ -54,20 +54,16 @@ public class Prototiping : MonoBehaviour
                 dashSpeed = 1;
             }
         }
-
     }
-
-
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         if (other.CompareTag("Item"))
         {
             gameManager.ingotCount++;
             ingotCount.text = $"IngotCount : {gameManager.ingotCount}";
-            //Destroy(other.gameObject);
             other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
         }
     }
 }
