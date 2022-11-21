@@ -23,9 +23,9 @@ public class OreMaker : MonoBehaviour
             int randomOre = Random.Range(1, 5);
             for (int i = 0; i < randomOre; i++)
             {
-                int randomX = Random.Range(-10, 10);
-                int randomZ = Random.Range(-10, 10);
-                Instantiate(ore, new Vector3(randomX, 0.5f, randomZ), transform.rotation);
+                int randomX = Random.Range(-6, 6);
+                int randomZ = Random.Range(-6, 6);
+                Instantiate(ore, new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f), transform.rotation);
                 ore.name = $"Ore_{gameManager.oreCount}";
                 gameManager.oreCount++;
             }
