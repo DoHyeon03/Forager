@@ -13,14 +13,4 @@ public class Item : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         ingotCount = GameObject.Find("IngotCount").GetComponent<Text>();
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            gameManager.ingotCount++;
-            ingotCount.text = $"IngotCount : {gameManager.ingotCount}";
-            gameObject.SetActive(false);
-            Destroy(gameObject);
-        }
-    }
 }

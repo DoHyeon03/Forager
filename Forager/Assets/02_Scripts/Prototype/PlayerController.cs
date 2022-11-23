@@ -70,4 +70,20 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Item"))
+        {
+            gameManager.ingotCount++;
+            ingotCount.text = $"IngotCount : {gameManager.ingotCount}";
+            other.gameObject.SetActive(false);
+            Destroy(other);
+        }
+
+        if (other.CompareTag("Water"))
+        {
+            //character.transform.position
+        }
+    }
 }
