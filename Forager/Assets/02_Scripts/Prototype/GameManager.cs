@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public int oreCount;
     public int ingotCount;
+    public float curTime;
+    public float coolTime;
+
+
     public bool menuScreenActive = false;
     public bool landPurchaseActive = false;
 
@@ -21,6 +25,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        curTime += Time.deltaTime;
+        if (curTime >= coolTime)
+        {
+
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (menuScreenActive)
