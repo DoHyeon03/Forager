@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4652252597520613927}
   - component: {fileID: 4652252597520613924}
   - component: {fileID: 4652252597520613925}
-  - component: {fileID: 6306616051124715766}
+  - component: {fileID: 4125828058884106538}
   m_Layer: 6
   m_Name: Ore
-  m_TagString: Untagged
+  m_TagString: Material
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &6306616051124715766
+--- !u!114 &4125828058884106538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4652252597520613946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63c76d499c8c5ff43a7266f45abc5f2a, type: 3}
+  m_Script: {fileID: 11500000, guid: fb15ff2b3d3b32047ac1dd06beaf7a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   oreHp: 5

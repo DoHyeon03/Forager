@@ -9,7 +9,7 @@ public class PlayerRotate : MonoBehaviour
     private RaycastHit hit;
     private int layerMask;
 
-    public Ore ore;
+    public MaterialController material;
 
     public float curTime;
     public float coolTime = 0.3f;
@@ -40,8 +40,15 @@ public class PlayerRotate : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    ore = GameObject.Find(hit.collider.gameObject.name).GetComponent<Ore>();
-                    ore.oreHp--;
+                    if (hit.collider.CompareTag("Material"))
+                    {
+                        material = GameObject.Find(hit.collider.gameObject.name).GetComponent<MaterialController>();
+                        material.oreHp--;
+                    }
+                    else if (hit.collider.CompareTag("Enemy"))
+                    {
+
+                    }
                     attackOn = false;
                 }
                 Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);

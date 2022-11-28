@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public bool landPurchaseActive = false;
 
     public Image menuScreen;
-    public Image landPurchaseScreen;
+    public GameObject landPurchaseScreen;
 
     void Start()
     {
@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
                 menuScreen.gameObject.SetActive(true);
                 menuScreenActive = true;
             }
-
         }
     }
 

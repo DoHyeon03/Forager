@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ore : MonoBehaviour
+public class MaterialController : MonoBehaviour
 {
     public int oreHp;
     public GameObject oreItem;
