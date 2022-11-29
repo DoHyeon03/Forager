@@ -8,6 +8,7 @@ TagManager:
   - Water
   - Ground
   - Material
+  - LandBuy
   layers:
   - Default
   - TransparentFX

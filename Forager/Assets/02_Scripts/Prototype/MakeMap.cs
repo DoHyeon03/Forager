@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class MakeMap : MonoBehaviour
@@ -9,6 +10,7 @@ public class MakeMap : MonoBehaviour
     public float mapSizeHalf;
 
     public GameObject groundPrefab;
+    public Button buttonPrefab;
 
     void Start()
     {
@@ -24,7 +26,14 @@ public class MakeMap : MonoBehaviour
                     continue;
                 }   
                 GameObject ground= Instantiate(groundPrefab, new Vector3(i * 12, 0, j * 12), transform.rotation);
+                Button button = Instantiate(buttonPrefab);
+                Canvas canvas = ground.GetComponentInChildren<Canvas>();
                 ground.name = "GroundPrefab(" + count + ")";
+                button.transform.SetParent(canvas.transform, false);
+                button.name = count.ToString();
+                Text buttonText = button.GetComponentInChildren<Text>();
+                buttonText.text = count.ToString();
+                
                 count++;
             }
         }

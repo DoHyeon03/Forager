@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public int oreCount;
     public int ingotCount;
+    public int coinCount;
     public float curTime;
     public float coolTime;
 
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public Image menuScreen;
     public GameObject landPurchaseScreen;
+    public Text coinText;
 
     void Start()
     {
@@ -25,11 +27,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        curTime += Time.deltaTime;
-        if (curTime >= coolTime)
-        {
-
-        }
+        coinText.text = "Coin : " + coinCount.ToString();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (menuScreenActive)

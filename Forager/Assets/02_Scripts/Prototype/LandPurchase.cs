@@ -19,30 +19,16 @@ public class LandPurchase : MonoBehaviour
     void Start()
     {
         makeMap = GameObject.Find("LandManager").GetComponent<MakeMap>();
-
-        int count = 1;
-
-        for (int i = 0; i < makeMap.mapSize; i++)
-        {
-            for (int j = 0; j < makeMap.mapSize; j++)
-            {
-                Button button = Instantiate(buttonPrefab);
-                Text buttonText = button.GetComponentInChildren<Text>();
-                button.transform.SetParent(landUI.transform, false);
-                button.name = count.ToString();
-                buttonText.text = count.ToString();
-                count++;
-            }
-        }
-        
     }
 
     public void LandBuy()
     {
         buttonText = EventSystem.current.currentSelectedGameObject;
+        Debug.Log("GroundPrefab(" + buttonText.name + ")");
         groundPrefab = GameObject.Find("GroundPrefab(" + buttonText.name + ")");
         ground = groundPrefab.transform.Find("Ground").GetComponent<GameObject>();
         sea = groundPrefab.transform.Find("Sea").GetComponent<GameObject>();
+        
 
         ground.transform.position = sea.transform.position;
         sea.gameObject.SetActive(false);
