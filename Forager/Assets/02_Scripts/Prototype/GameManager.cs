@@ -15,14 +15,13 @@ public class GameManager : MonoBehaviour
     public bool menuScreenActive = false;
     public bool landPurchaseActive = false;
 
-    public Image menuScreen;
+    public GameObject menuScreen;
     public GameObject landPurchaseScreen;
     public Text coinText;
 
     void Start()
     {
         menuScreen.gameObject.SetActive(false);
-        //menuScreen = GameObject.Find("MenuScreen").GetComponent<MenuScreen>();
     }
 
     void Update()
@@ -49,15 +48,6 @@ public class GameManager : MonoBehaviour
 
     public void LandPurchaseMenu()
     {
-        if (landPurchaseActive)
-        {
-            landPurchaseScreen.gameObject.SetActive(false);
-            landPurchaseActive = false;
-        }
-        else
-        {
-            landPurchaseScreen.gameObject.SetActive(true);
-            landPurchaseActive = true;
-        }
+
     }
 }

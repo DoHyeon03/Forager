@@ -1,18 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum ENEMYSTATE
     {
-        
+        IDLE=0,
+        MOVE,
+        ATTACK,
+        DAMAGE,
+        DEAD
     }
 
-    // Update is called once per frame
+    public ENEMYSTATE enemyState;
+
+    public float moveSpeed;
+    public bool playerTriggerOn;
+
+    public NavMeshAgent navMeshAgent;
+
+
+    void Start()
+    {
+
+    }
+
+
     void Update()
     {
-        
+        switch (enemyState)
+        {
+            case ENEMYSTATE.IDLE:
+                navMeshAgent.speed = 0;
+
+                if (playerTriggerOn)
+                {
+                    enemyState = ENEMYSTATE.MOVE;
+                }
+                break;
+            case ENEMYSTATE.MOVE:
+
+                break;
+            case ENEMYSTATE.ATTACK:
+                break;
+            case ENEMYSTATE.DAMAGE:
+                break;
+            case ENEMYSTATE.DEAD:
+                break;
+            default:
+                break;
+        }
     }
 }

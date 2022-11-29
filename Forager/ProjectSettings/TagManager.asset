@@ -9,6 +9,8 @@ TagManager:
   - Ground
   - Material
   - LandBuy
+  - GroundBuyButton
+  - Forge
   layers:
   - Default
   - TransparentFX

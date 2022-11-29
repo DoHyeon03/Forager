@@ -11,6 +11,8 @@ public class PlayerRotate : MonoBehaviour
 
     public MaterialController material;
 
+    public GameObject forgeUI;
+
     public float curTime;
     public float coolTime = 0.3f;
     public bool attackOn = false;
@@ -48,6 +50,10 @@ public class PlayerRotate : MonoBehaviour
                     else if (hit.collider.CompareTag("Enemy"))
                     {
 
+                    }
+                    else if (hit.collider.CompareTag("Forge"))
+                    {
+                        forgeUI.SetActive(true);
                     }
                     attackOn = false;
                 }
