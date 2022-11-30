@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public RaycastHit hit;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if(Physics.Raycast(ray,out hit))
+            {
+                if (hit.collider != null)
+                {
+                    switch (hit.collider.name)
+                    {
+
+                    }
+                }
+            }
+        }
     }
 }

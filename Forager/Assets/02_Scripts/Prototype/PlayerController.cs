@@ -75,8 +75,14 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
-            gameManager.ingotCount++;
-            ingotCount.text = $"IngotCount : {gameManager.ingotCount}";
+            if (other.name == "Ingot(Clone)")
+            {
+                gameManager.ingotCount++;
+            }
+            else if (other.name == "Coin(Clone)")
+            {
+                gameManager.coinCount++;
+            }
             other.gameObject.SetActive(false);
             Destroy(other);
         }

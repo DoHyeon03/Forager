@@ -10,8 +10,8 @@ public class PlayerRotate : MonoBehaviour
     private int layerMask;
 
     public MaterialController material;
-
-    public GameObject forgeUI;
+    public GameManager gameManager;
+    public ForgeManager forgeManager;
 
     public float curTime;
     public float coolTime = 0.3f;
@@ -20,6 +20,8 @@ public class PlayerRotate : MonoBehaviour
     private void Start()
     {
         layerMask = 1 << 6;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        forgeManager = GameObject.Find("ForgeManager").GetComponent<ForgeManager>();
     }
     void Update()
     {
@@ -51,11 +53,16 @@ public class PlayerRotate : MonoBehaviour
                     {
 
                     }
-                    else if (hit.collider.CompareTag("Forge"))
-                    {
-                        forgeUI.SetActive(true);
-                    }
                     attackOn = false;
+                }
+                else if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (hit.collider.CompareTag("Forge"))
+                    {
+                        gameManager.forgeScreen.SetActive(true);
+                        gameManager.forgeScreenActive = true;
+                        forgeManager.forgePrefab = GameObject.Find(hit.collider.gameObject.name).gameObject;
+                    }
                 }
                 Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
             }

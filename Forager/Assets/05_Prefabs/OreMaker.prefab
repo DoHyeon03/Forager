@@ -46,5 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ore: {fileID: 4652252597520613946, guid: 8c79ccc88a047a64f909e58e8838f887, type: 3}
   curtime: 0
-  cooltime: 5
+  cooltime: 20
+  landVisible: 0
   gameManager: {fileID: 0}

@@ -14,9 +14,12 @@ public class GameManager : MonoBehaviour
 
     public bool menuScreenActive = false;
     public bool landPurchaseActive = false;
+    public bool forgeScreenActive = false;
 
     public GameObject menuScreen;
     public GameObject landPurchaseScreen;
+    public GameObject forgeScreen;
+    public Text ingotText;
     public Text coinText;
 
     void Start()
@@ -26,28 +29,28 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        ingotText.text = "Ingot : " + ingotCount.ToString();
         coinText.text = "Coin : " + coinCount.ToString();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (menuScreenActive)
+            if (forgeScreenActive)
             {
-                menuScreen.gameObject.SetActive(false);
-                menuScreenActive = false;
-                if (landPurchaseActive)
-                {
-                    LandPurchaseMenu();
-                }
+                forgeScreenActive = false;
+                forgeScreen.SetActive(false);
             }
             else
             {
-                menuScreen.gameObject.SetActive(true);
-                menuScreenActive = true;
+                if (menuScreenActive)
+                {
+                    menuScreen.gameObject.SetActive(false);
+                    menuScreenActive = false;
+                }
+                else
+                {
+                    menuScreen.gameObject.SetActive(true);
+                    menuScreenActive = true;
+                }
             }
         }
-    }
-
-    public void LandPurchaseMenu()
-    {
-
     }
 }

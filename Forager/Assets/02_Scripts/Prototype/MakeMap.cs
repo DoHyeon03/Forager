@@ -37,5 +37,6 @@ public class MakeMap : MonoBehaviour
                 count++;
             }
         }
+        buttonPrefab.gameObject.SetActive(false);
     }
 }

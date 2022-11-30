@@ -8,6 +8,8 @@ public class OreMaker : MonoBehaviour
     public float curtime;
     public float cooltime;
 
+    public bool landVisible = false;
+
     public RaycastHit hit;
     public RaycastHit hit2;
 
@@ -20,49 +22,52 @@ public class OreMaker : MonoBehaviour
 
     void Update()
     {
-        curtime += Time.deltaTime;
-        if (curtime >= cooltime)
+        if (landVisible)
         {
-            int randomOre = Random.Range(3, 6);
-            Debug.Log(randomOre);
-            for (int i = 0; i < randomOre; i++)
+            curtime += Time.deltaTime;
+            if (curtime >= cooltime)
             {
-                int randomX = Random.Range(-6, 6);
-                int randomZ = Random.Range(-6, 6);
-
-                if (Physics.Raycast(new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f), transform.TransformDirection(Vector3.down), out hit, 1f))
+                int randomOre = Random.Range(3, 5);
+                Debug.Log(randomOre);
+                for (int i = 0; i < randomOre; i++)
                 {
-                    Debug.Log(hit.collider.tag);
-                    if (hit.collider.CompareTag("Ground"))
-                    {
-                        Instantiate(ore, new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f), transform.rotation);
-                        ore.name = $"Ore_{gameManager.oreCount}";
-                        gameManager.oreCount++;
+                    int randomX = Random.Range(-6, 6);
+                    int randomZ = Random.Range(-6, 6);
 
-                        //중복 생성 안되게 하는 코드
-                        /*
-                        if (Physics.Raycast(new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f), transform.TransformDirection(Vector3.zero), out hit2, 1f))
+                    if (Physics.Raycast(new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f), transform.TransformDirection(Vector3.down), out hit, 1f))
+                    {
+                        Debug.Log(hit.collider.tag);
+                        if (hit.collider.CompareTag("Ground"))
                         {
-                            Debug.Log(hit2.collider.tag);
-                            if (hit2.collider.CompareTag("Material"))
+                            Instantiate(ore, new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f), transform.rotation);
+                            ore.name = $"Ore_{gameManager.oreCount}";
+                            gameManager.oreCount++;
+
+                            //중복 생성 안되게 하는 코드
+                            /*
+                            if (Physics.Raycast(new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f), transform.TransformDirection(Vector3.zero), out hit2, 1f))
                             {
-                                i--;
-                                continue;
+                                Debug.Log(hit2.collider.tag);
+                                if (hit2.collider.CompareTag("Material"))
+                                {
+                                    i--;
+                                    continue;
+                                }
                             }
+                            else
+                            {
+                            }
+                            */
                         }
                         else
                         {
+                            i--;
+                            continue;
                         }
-                        */
-                    }
-                    else
-                    {
-                        i--;
-                        continue;
                     }
                 }
+                curtime = 0;
             }
-            curtime = 0;
         }
     }
 }
