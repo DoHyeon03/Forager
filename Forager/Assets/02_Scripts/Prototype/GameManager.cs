@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public int coinCount;
     public float curTime;
     public float coolTime;
-
+    public float mouseScroll;
 
     public bool menuScreenActive = false;
     public bool landPurchaseActive = false;
@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public GameObject menuScreen;
     public GameObject landPurchaseScreen;
     public GameObject forgeScreen;
+
+    public Camera mainCamera;
+
     public Text ingotText;
     public Text coinText;
 
@@ -29,8 +32,26 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        ingotText.text = "Ingot : " + ingotCount.ToString();
-        coinText.text = "Coin : " + coinCount.ToString();
+        //ingotText.text = "Ingot : " + ingotCount.ToString();
+        //coinText.text = "Coin : " + coinCount.ToString();
+        ingotText.text = ingotCount.ToString();
+        coinText.text = coinCount.ToString();
+
+        mouseScroll = -Input.GetAxis("Mouse ScrollWheel");
+
+        if (mainCamera.fieldOfView < 25f && mouseScroll < 0)
+        {
+            mainCamera.fieldOfView = 25f;
+        }
+        else if (mainCamera.fieldOfView >60f && mouseScroll > 0)
+        {
+            mainCamera.fieldOfView = 60f;
+        }
+        else
+        {
+            mainCamera.fieldOfView += mouseScroll * 300f * Time.deltaTime;
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (forgeScreenActive)

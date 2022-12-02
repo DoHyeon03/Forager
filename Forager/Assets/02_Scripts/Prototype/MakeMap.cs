@@ -32,8 +32,10 @@ public class MakeMap : MonoBehaviour
                 button.transform.SetParent(canvas.transform, false);
                 button.name = count.ToString();
                 Text buttonText = button.GetComponentInChildren<Text>();
-                buttonText.text = count.ToString();
-                
+                //buttonText.text = count.ToString();
+                buttonText.text = "100";
+
+
                 count++;
             }
         }
