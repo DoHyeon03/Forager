@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public CharacterController character;
     public GameManager gameManager;
     public Animator playerAnim;
+    public AudioClip playerWalkSound;
+    public AudioSource audioSource;
 
     public float playerSpeed;
     public float dashSpeed = 1;
@@ -30,14 +32,15 @@ public class PlayerController : MonoBehaviour
     public bool attackOn;
     public bool idleOn;
     public bool delay = true;
-    public Vector3 playerPositon = new Vector3(0, 0, 0);
 
-    public Text ingotCount;
+    public Vector3 playerPositon = new Vector3(0, 0, 0);
 
     void Start()
     {
         character = gameObject.GetComponent<CharacterController>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = playerWalkSound;
     }
 
     void Update()
@@ -52,6 +55,8 @@ public class PlayerController : MonoBehaviour
                 if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W))
                 {
                     playerState = PLAYERSTATE.WALK;
+                    audioSource.clip = playerWalkSound;
+                    audioSource.Play();
                 }
                 if (attackOn)
                 {
@@ -62,6 +67,8 @@ public class PlayerController : MonoBehaviour
             case PLAYERSTATE.WALK:
                 character.Move(new Vector3(moveX, 0, moveZ));
                 IfIdle(moveX, moveZ);
+
+                audioSource.clip = playerWalkSound;
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
@@ -76,6 +83,7 @@ public class PlayerController : MonoBehaviour
                 {
                     playerState = PLAYERSTATE.IDLE;
                     idleOn = false;
+                    audioSource.Stop();
                 }
                 break;
             case PLAYERSTATE.DASH:
@@ -97,6 +105,7 @@ public class PlayerController : MonoBehaviour
                 {
                     playerState = PLAYERSTATE.IDLE;
                     idleOn = false;
+                    audioSource.Stop();
                 }
                 break;
             case PLAYERSTATE.ATTACK:
@@ -107,6 +116,7 @@ public class PlayerController : MonoBehaviour
                     delay = true;
                     playerState = PLAYERSTATE.IDLE;
                     attackCurTime = 0;
+                    audioSource.Stop();
                 }
                 break;
             default:

@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public int ingotCount;
     public int coinCount;
     public int stoneCount;
+
+    public int oreCount;
     public float mouseScroll;
 
     public bool forgeScreenActive = false;
@@ -66,10 +67,5 @@ public class GameManager : MonoBehaviour
     public void ExitButton()
     {
         Application.Quit();
-    }
-
-    public void GameStart()
-    {
-        SceneManager.LoadScene("MainScene");
     }
 }

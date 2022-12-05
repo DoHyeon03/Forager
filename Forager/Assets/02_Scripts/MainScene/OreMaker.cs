@@ -28,41 +28,34 @@ public class OreMaker : MonoBehaviour
             if (curtime >= cooltime)
             {
                 int randomOre = Random.Range(3, 5);
-                Debug.Log(randomOre);
                 for (int i = 0; i < randomOre; i++)
                 {
                     int randomX = Random.Range(-6, 6);
                     int randomZ = Random.Range(-6, 6);
 
-                    if (Physics.Raycast(new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f), transform.TransformDirection(Vector3.down), out hit, 1f))
+                    if (Physics.Raycast(new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f), transform.TransformDirection(Vector3.down), out hit, 2f))
                     {
+                        Debug.Log(new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f));
                         Debug.Log(hit.collider.tag);
-                        if (hit.collider.CompareTag("Ground"))
+                        switch (hit.collider.tag)
                         {
-                            Instantiate(ore, new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f), transform.rotation);
-                            ore.name = $"Ore_{gameManager.ingotCount}";
-                            gameManager.ingotCount++;
-
-                            //중복 생성 안되게 하는 코드
-                            /*
-                            if (Physics.Raycast(new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f), transform.TransformDirection(Vector3.zero), out hit2, 1f))
-                            {
-                                Debug.Log(hit2.collider.tag);
-                                if (hit2.collider.CompareTag("Material"))
-                                {
-                                    i--;
-                                    continue;
-                                }
-                            }
-                            else
-                            {
-                            }
-                            */
-                        }
-                        else
-                        {
-                            i--;
-                            continue;
+                            case "Ground":
+                                Instantiate(ore, new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f), transform.rotation);
+                                ore.name = $"Ore_{gameManager.oreCount}";
+                                gameManager.oreCount++;
+                                break;
+                            case "Forge":
+                                i--;
+                                continue;
+                                break;
+                            case "Water":
+                                i--;
+                                continue;
+                                break;
+                            case "Material":
+                                i--;
+                                continue;
+                                break;
                         }
                     }
                 }
