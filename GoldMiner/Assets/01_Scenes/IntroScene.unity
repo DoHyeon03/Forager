@@ -3722,7 +3722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -322.7873, y: 251.03357}
+  m_AnchoredPosition: {x: -282, y: 284}
   m_SizeDelta: {x: 991.3251, y: 330.8447}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1462457203
@@ -3746,7 +3746,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 73c100a011410e741896b554e79d8aca, type: 3}
     m_FontSize: 187
     m_FontStyle: 0
     m_BestFit: 0
@@ -3758,7 +3758,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Title
+  m_Text: Gold Miner
 --- !u!222 &1462457204
 CanvasRenderer:
   m_ObjectHideFlags: 0
