@@ -114,6 +114,7 @@ MonoBehaviour:
   oreHp: 5
   goldIngot: {fileID: 8864044606285098485, guid: b6ef43f4cfc2e4345942570068a98eb2, type: 3}
   stone: {fileID: 8864044606285098485, guid: 49ff7a3bebdfb914d9eb1c2d46ed1d69, type: 3}
+  itemDropSound: {fileID: 6227795814261445090, guid: 4e7cc7f1d335ea14ab44ea0bb756a2aa, type: 3}
 --- !u!1001 &417712945391273955
 PrefabInstance:
   m_ObjectHideFlags: 0

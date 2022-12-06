@@ -11,7 +11,7 @@ public class ForgeManager : MonoBehaviour
 
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();  
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
 

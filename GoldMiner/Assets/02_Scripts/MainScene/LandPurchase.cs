@@ -12,6 +12,8 @@ public class LandPurchase : MonoBehaviour
     public GameObject groundPrefab;
     public GameObject oreMakerPrefab;
 
+    public AudioSource audioSource;
+
     public Button buttonPrefab;
 
     public GameManager gameManager;
@@ -20,6 +22,7 @@ public class LandPurchase : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void LandBuy()
@@ -37,6 +40,7 @@ public class LandPurchase : MonoBehaviour
             oreMaker.landVisible = true;
             buttonText.SetActive(false);
             gameManager.coinCount -= 100;
+            audioSource.Play();
         }
         else
         {

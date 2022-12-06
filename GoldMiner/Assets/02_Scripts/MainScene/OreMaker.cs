@@ -5,6 +5,8 @@ using UnityEngine;
 public class OreMaker : MonoBehaviour
 {
     public GameObject ore;
+    public GameObject oreMakeSound;
+
     public float curtime;
     public float cooltime;
 
@@ -59,6 +61,7 @@ public class OreMaker : MonoBehaviour
                         }
                     }
                 }
+                Instantiate(oreMakeSound);
                 curtime = 0;
             }
         }

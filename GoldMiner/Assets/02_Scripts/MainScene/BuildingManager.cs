@@ -10,6 +10,8 @@ public class BuildingManager : MonoBehaviour
     public GameObject forgePrefab;
     public GameManager gameManager;
 
+    public AudioSource audioSource;
+
     public Button buildingOn;
     public Button buildingOff;
 
@@ -18,6 +20,7 @@ public class BuildingManager : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     
@@ -46,6 +49,7 @@ public class BuildingManager : MonoBehaviour
                                     gameManager.stoneCount -= 10;
                                 }
                                 buildingButtonOn = false;
+                                audioSource.Play();
                                 break;
                             case "Forge":
                                 Debug.Log("건설 불가");

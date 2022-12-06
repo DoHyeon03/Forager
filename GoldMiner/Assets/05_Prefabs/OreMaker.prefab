@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ore: {fileID: 4652252597520613946, guid: 8c79ccc88a047a64f909e58e8838f887, type: 3}
+  oreMakeSound: {fileID: 931739950808033366, guid: a63fd477de259664abf0cf03f623a476, type: 3}
   curtime: 0
   cooltime: 20
   landVisible: 0

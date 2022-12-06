@@ -17,6 +17,7 @@ public class PlayerRotate : MonoBehaviour
     public AudioClip attackSound1;
     public AudioClip attackSound2;
     public AudioClip attackSound3;
+    public AudioClip forgeSound;
 
     private void Start()
     {
@@ -79,6 +80,8 @@ public class PlayerRotate : MonoBehaviour
                     gameManager.forgeScreen.SetActive(true);
                     gameManager.forgeScreenActive = true;
                     forgeManager.forgePrefab = GameObject.Find(hit.collider.gameObject.name).gameObject;
+                    audiosource.clip = forgeSound;
+                    audiosource.Play();
                 }
             }
             Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);

@@ -8,6 +8,8 @@ public class MaterialController : MonoBehaviour
     public GameObject goldIngot;
     public GameObject stone;
 
+    public GameObject itemDropSound;
+
     void Update()
     {
         if (oreHp <= 0)
@@ -23,6 +25,7 @@ public class MaterialController : MonoBehaviour
         for (int i = 0; i < Random.Range(1, 3); i++)
         {
             Instantiate(stone, transform.position, transform.rotation);
+            Instantiate(itemDropSound);
         }
     }
 }

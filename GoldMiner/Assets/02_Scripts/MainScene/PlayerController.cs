@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip playerWalkSound;
     public AudioSource audioSource;
 
+    public GameObject coinSound;
+    public GameObject itemPickUp;
+
     public float playerSpeed;
     public float dashSpeed = 1;
 
@@ -141,14 +144,17 @@ public class PlayerController : MonoBehaviour
             if (other.name == "GoldIngot(Clone)")
             {
                 gameManager.ingotCount++;
+                Instantiate(itemPickUp);
             }
             else if (other.name == "Coin(Clone)")
             {
                 gameManager.coinCount += 4;
+                Instantiate(coinSound);
             }
             else if (other.name == "Stone(Clone)")
             {
                 gameManager.stoneCount++;
+                Instantiate(itemPickUp);
             }
             other.gameObject.SetActive(false);
             Destroy(other.gameObject);
