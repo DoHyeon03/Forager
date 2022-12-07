@@ -37,8 +37,8 @@ public class OreMaker : MonoBehaviour
 
                     if (Physics.Raycast(new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f), transform.TransformDirection(Vector3.down), out hit, 2f))
                     {
-                        Debug.Log(new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f));
-                        Debug.Log(hit.collider.tag);
+                        //Debug.Log(new Vector3(transform.position.x + randomX + 0.5f, 0.5f, transform.position.z + randomZ + 0.5f));
+                        //Debug.Log(hit.collider.tag);
                         switch (hit.collider.tag)
                         {
                             case "Ground":

@@ -11,6 +11,7 @@ public class LandPurchase : MonoBehaviour
     public GameObject sea;
     public GameObject groundPrefab;
     public GameObject oreMakerPrefab;
+    public GameObject landPurchaseEffect;
 
     public AudioSource audioSource;
 
@@ -41,6 +42,7 @@ public class LandPurchase : MonoBehaviour
             buttonText.SetActive(false);
             gameManager.coinCount -= 100;
             audioSource.Play();
+            Instantiate(landPurchaseEffect, ground.transform.position, ground.transform.rotation);
         }
         else
         {

@@ -8,6 +8,8 @@ public class PlayerRotate : MonoBehaviour
     private RaycastHit hit;
     private int layerMask;
 
+    public GameObject orehitEffect;
+
     public GameManager gameManager;
     public MaterialController material;
     public ForgeManager forgeManager;
@@ -70,6 +72,7 @@ public class PlayerRotate : MonoBehaviour
                                 break;
                         }
                         audiosource.Play();
+                        Instantiate(orehitEffect, hit.collider.transform.position, hit.collider.transform.rotation);
                     }
                 }
             }
