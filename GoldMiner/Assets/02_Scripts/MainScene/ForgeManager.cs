@@ -17,10 +17,12 @@ public class ForgeManager : MonoBehaviour
 
     public void ForgeStart()
     {
-        gameManager.ingotCount--;
-        forgeContoller = forgePrefab.GetComponent<ForgeController>();
-        forgeContoller.waitWork++;
-        forgeContoller.forgeWorking = true;
+        if (gameManager.ingotCount >= 1)
+        {
+            gameManager.ingotCount--;
+            forgeContoller = forgePrefab.GetComponent<ForgeController>();
+            forgeContoller.waitWork++;
+            forgeContoller.forgeWorking = true;
+        }
     }
-
 }
